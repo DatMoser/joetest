@@ -21,26 +21,26 @@ conn.connect(conn_params, function (err) {
     // Put listener for Photoelectric barrier here
     app.post('/increment', (req, res) => {
         conn.exec('UPDATE Joe SET counter = counter + 1 WHERE id = ?', [1], function (err, result) {
-            if (err) { req.send(err) };
+            if (err) { res.send(err) };
             console.log("Increment:", result);
-            req.send(result)
+            res.send(result)
         })
     })
 
 
     app.post('/decrement', (req, res) => {
         conn.exec('UPDATE Joe SET counter = counter - 1 WHERE id = ?', [1], function (err, result) {
-            if (err) { req.send(err) };
+            if (err) { res.send(err) };
             console.log("Increment:", result);
-            req.send(result)
+            res.send(result)
         })
     })
 
 
     app.get('/', (req, res) => {
         conn.exec('SELECT * FROM Joe WHERE id = ?', [1], function (err, result) {
-            if (err) { req.send(err) }
-            else { req.send(result) }
+            if (err) { res.send(err) }
+            else { res.send(result) }
         })
     })
 
