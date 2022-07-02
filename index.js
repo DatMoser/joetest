@@ -37,7 +37,7 @@ conn.connect(conn_params, function (err) {
     })
 
 
-    app.get('/data', (req, res) => {
+    app.get('/', (req, res) => {
         conn.exec('SELECT * FROM Joe WHERE id = ?', [1], function (err, result) {
             if (err) { req.send(err) }
             else { req.send(result) }
