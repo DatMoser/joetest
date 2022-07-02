@@ -19,7 +19,6 @@ conn.connect(conn_params, function (err) {
     console.log("Connection established");
 
     // Put listener for Photoelectric barrier here
-
     app.post('/increment', (req, res) => {
         conn.exec('UPDATE Joe SET counter = counter + 1 WHERE id = ?', [1], function (err, result) {
             if (err) { req.send(err) };
@@ -48,11 +47,4 @@ conn.connect(conn_params, function (err) {
 
     app.listen(process.env.PORT || 3000,
         () => console.log("Server is running..."));
-});
-
-
-app.close(() => {
-    conn.disconnect();
-    console.log('Closed out remaining connections');
-    process.exit(0);
 });
